@@ -251,7 +251,7 @@ const EmergencyBooking = () => {
                             </div>
                             <div className="space-y-1">
                                 <label className="text-sm font-medium text-gray-700">Hãng xe</label>
-                                <input type="text" name="brand" value={formData.brand} onChange={handleChange} placeholder="Honda, Yamaha..." className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+                                <input type="text" name="brand" value={formData.brand} onChange={handleChange} placeholder="Toyota, Hyundai..." className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
                             </div>
                         </div>
 

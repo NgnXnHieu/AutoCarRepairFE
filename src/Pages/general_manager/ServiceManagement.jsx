@@ -343,7 +343,7 @@ export default function ServiceManagement() {
                                 <div className="space-y-5">
                                     <div>
                                         <label className="block text-sm font-bold text-slate-700 mb-1">Tên dịch vụ <span className="text-rose-500">*</span></label>
-                                        <input required type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="VD: Bảo dưỡng toàn bộ xe tay ga..." className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500" />
+                                        <input required type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="VD: Bảo dưỡng định kỳ tổng quát..." className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500" />
                                     </div>
 
                                     <div>

@@ -38,7 +38,12 @@ export default function VehicleDetail() {
                 model: vehicleData.model,
                 manufacture_year: vehicleData.manufacture_year,
                 image: vehicleData.iamge || vehicleData.image,
-                kilometers: finalKm
+                kilometers: finalKm,
+                vin: vehicleData.vin,
+                color: vehicleData.color,
+                seatCount: vehicleData.seatCount,
+                fuelType: vehicleData.fuelType,
+                transmission: vehicleData.transmission
             });
         } catch (error) {
             console.error("Lỗi khi fetch thông tin xe: ", error);
@@ -120,6 +125,9 @@ export default function VehicleDetail() {
 
     const formatCurrency = (amount) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
     const formatNumber = (num) => new Intl.NumberFormat('vi-VN').format(num);
+
+    const fuelTypeLabels = { XANG: 'Xăng', DAU: 'Dầu diesel', DIEN: 'Điện', HYBRID: 'Hybrid' };
+    const transmissionLabels = { SO_SAN: 'Số sàn', TU_DONG: 'Số tự động' };
 
     const formatStatusTime = (isoString) => {
         if (!isoString) return "";
@@ -222,6 +230,41 @@ export default function VehicleDetail() {
                                 <p className="text-2xl font-black text-white tracking-tight">{formatNumber(vehicle.kilometers)} <span className="text-sm font-semibold text-slate-400">km</span></p>
                             </div>
                         </div>
+
+                        {(vehicle.vin || vehicle.color || vehicle.seatCount || vehicle.fuelType || vehicle.transmission) && (
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                                {vehicle.vin && (
+                                    <div className="bg-white/5 backdrop-blur-lg p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors col-span-2 md:col-span-1">
+                                        <p className="text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Số khung/Số máy</p>
+                                        <p className="text-lg font-black text-white truncate">{vehicle.vin}</p>
+                                    </div>
+                                )}
+                                {vehicle.color && (
+                                    <div className="bg-white/5 backdrop-blur-lg p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                                        <p className="text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Màu xe</p>
+                                        <p className="text-xl font-black text-white">{vehicle.color}</p>
+                                    </div>
+                                )}
+                                {vehicle.seatCount && (
+                                    <div className="bg-white/5 backdrop-blur-lg p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                                        <p className="text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Số chỗ ngồi</p>
+                                        <p className="text-xl font-black text-white">{vehicle.seatCount} chỗ</p>
+                                    </div>
+                                )}
+                                {vehicle.fuelType && (
+                                    <div className="bg-white/5 backdrop-blur-lg p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                                        <p className="text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Nhiên liệu</p>
+                                        <p className="text-xl font-black text-white">{fuelTypeLabels[vehicle.fuelType] || vehicle.fuelType}</p>
+                                    </div>
+                                )}
+                                {vehicle.transmission && (
+                                    <div className="bg-white/5 backdrop-blur-lg p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                                        <p className="text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Hộp số</p>
+                                        <p className="text-xl font-black text-white">{transmissionLabels[vehicle.transmission] || vehicle.transmission}</p>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
 

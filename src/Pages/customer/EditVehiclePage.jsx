@@ -24,7 +24,12 @@ export default function EditVehiclePage() {
         brand: '',
         model: '',
         manufacture_year: '',
-        kilometters: ''
+        kilometters: '',
+        vin: '',
+        color: '',
+        seatCount: '',
+        fuelType: '',
+        transmission: ''
     });
 
     const [imageFile, setImageFile] = useState(null);
@@ -50,7 +55,12 @@ export default function EditVehiclePage() {
                     brand: data.brand || '',
                     model: data.model || '',
                     manufacture_year: data.manufacture_year || '',
-                    kilometters: data.kilometters || 0
+                    kilometters: data.kilometters || 0,
+                    vin: data.vin || '',
+                    color: data.color || '',
+                    seatCount: data.seatCount || '',
+                    fuelType: data.fuelType || '',
+                    transmission: data.transmission || ''
                 });
                 console.log(data)
                 setImagePreview(data.image || data.iamge || null);
@@ -104,6 +114,13 @@ export default function EditVehiclePage() {
             // Thường API update không cho đổi biển số, nhưng nếu có thì append vào:
             // payload.append('licensePlate', fullPlate);
             payload.append('kilometters', formData.kilometters ? parseInt(formData.kilometters) : 0);
+
+            if (formData.vin) payload.append('vin', formData.vin);
+            if (formData.color) payload.append('color', formData.color);
+            if (formData.seatCount) payload.append('seatCount', parseInt(formData.seatCount));
+            if (formData.fuelType) payload.append('fuelType', formData.fuelType);
+            if (formData.transmission) payload.append('transmission', formData.transmission);
+
             if (imageFile) payload.append('image', imageFile);
             console.log(Object.fromEntries(payload.entries()))
             await vehicleApi.updateVehicle(id, payload);
@@ -180,10 +197,14 @@ export default function EditVehiclePage() {
                             <div>
                                 <label className="text-sm font-bold text-slate-700 mb-2 block">Hãng xe <span className="text-rose-500">*</span></label>
                                 <select name="brand" value={formData.brand} onChange={handleInputChange} className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold">
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Hyundai">Hyundai</option>
+                                    <option value="Kia">Kia</option>
                                     <option value="Honda">Honda</option>
-                                    <option value="Yamaha">Yamaha</option>
-                                    <option value="Suzuki">Suzuki</option>
-                                    <option value="Piaggio">Piaggio</option>
+                                    <option value="Mazda">Mazda</option>
+                                    <option value="Ford">Ford</option>
+                                    <option value="VinFast">VinFast</option>
+                                    <option value="Mitsubishi">Mitsubishi</option>
                                     <option value="Other">Khác</option>
                                 </select>
                             </div>
@@ -193,7 +214,7 @@ export default function EditVehiclePage() {
                         <div className="space-y-8">
                             <div>
                                 <label className="text-sm font-bold text-slate-700 mb-2 block">Dòng xe (Model) <span className="text-rose-500">*</span></label>
-                                <input name="model" value={formData.model} placeholder="VD: Exciter, Vision..." onChange={handleInputChange} className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold" />
+                                <input name="model" value={formData.model} placeholder="VD: Vios, Civic, CX-5..." onChange={handleInputChange} className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold" />
                             </div>
 
                             <div>
@@ -219,6 +240,75 @@ export default function EditVehiclePage() {
                                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">
                                         Km
                                     </span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="text-sm font-bold text-slate-700 mb-2 block">Số khung/Số máy (VIN)</label>
+                                <input
+                                    name="vin"
+                                    value={formData.vin}
+                                    placeholder="VD: 1HGCM82633A004352"
+                                    onChange={handleInputChange}
+                                    className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold uppercase"
+                                />
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="text-sm font-bold text-slate-700 mb-2 block">Màu xe</label>
+                                    <input
+                                        name="color"
+                                        value={formData.color}
+                                        placeholder="VD: Trắng"
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="text-sm font-bold text-slate-700 mb-2 block">Số chỗ ngồi</label>
+                                    <input
+                                        name="seatCount"
+                                        type="number"
+                                        min="1"
+                                        max="60"
+                                        placeholder="VD: 5"
+                                        onWheel={(e) => e.target.blur()}
+                                        value={formData.seatCount}
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-mono font-bold"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="text-sm font-bold text-slate-700 mb-2 block">Nhiên liệu</label>
+                                    <select
+                                        name="fuelType"
+                                        value={formData.fuelType}
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold"
+                                    >
+                                        <option value="">-- Chọn --</option>
+                                        <option value="XANG">Xăng</option>
+                                        <option value="DAU">Dầu diesel</option>
+                                        <option value="DIEN">Điện</option>
+                                        <option value="HYBRID">Hybrid</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="text-sm font-bold text-slate-700 mb-2 block">Hộp số</label>
+                                    <select
+                                        name="transmission"
+                                        value={formData.transmission}
+                                        onChange={handleInputChange}
+                                        className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 bg-slate-50 font-bold"
+                                    >
+                                        <option value="">-- Chọn --</option>
+                                        <option value="SO_SAN">Số sàn</option>
+                                        <option value="TU_DONG">Số tự động</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

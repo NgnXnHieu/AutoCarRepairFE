@@ -134,8 +134,8 @@ export default function AddVehicleModal({ isOpen, onClose, onSave, isSubmitting 
                     <div className="space-y-4">
                         {[
                             { icon: Hash, label: 'Biển số xe', id: 'licensePlate', placeholder: 'VD: 29A1-123.45' },
-                            { icon: ShieldCheck, label: 'Hãng xe', id: 'brand', placeholder: 'VD: Honda' },
-                            { icon: Wrench, label: 'Model', id: 'model', placeholder: 'VD: SH 150i ABS' },
+                            { icon: ShieldCheck, label: 'Hãng xe', id: 'brand', placeholder: 'VD: Toyota' },
+                            { icon: Wrench, label: 'Model', id: 'model', placeholder: 'VD: Vios, Civic...' },
                             { icon: Calendar, label: 'Năm sản xuất', id: 'manufacture_year', placeholder: 'VD: 2023', type: 'number' },
                         ].map((input) => (
                             <div key={input.id}>

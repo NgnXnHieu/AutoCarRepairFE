@@ -478,11 +478,11 @@ export default function BookingPage() {
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
                                         <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">Hãng xe</label>
-                                        <input type="text" name="brand" value={formData.brand || ""} onChange={handleInputChange} placeholder="VD: Honda" className="w-full bg-slate-50 border border-slate-200 text-slate-900 font-semibold text-sm rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" />
+                                        <input type="text" name="brand" value={formData.brand || ""} onChange={handleInputChange} placeholder="VD: Toyota" className="w-full bg-slate-50 border border-slate-200 text-slate-900 font-semibold text-sm rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" />
                                     </div>
                                     <div>
                                         <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">Dòng xe</label>
-                                        <input type="text" name="model" value={formData.model || ""} onChange={handleInputChange} placeholder="VD: Air Blade" className="w-full bg-slate-50 border border-slate-200 text-slate-900 font-semibold text-sm rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" />
+                                        <input type="text" name="model" value={formData.model || ""} onChange={handleInputChange} placeholder="VD: Vios" className="w-full bg-slate-50 border border-slate-200 text-slate-900 font-semibold text-sm rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" />
                                     </div>
                                 </div>
                             </div>

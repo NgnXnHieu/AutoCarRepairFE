@@ -15,7 +15,7 @@ export default function HeroSection({ title, subtitle, bgImage, btn1Text, btn2Te
             <img
                 // Dùng ảnh từ DB, nếu không có thì lấy ảnh mặc định
                 src={bgImage}
-                alt="Motorbike Repair Shop Background"
+                alt="Car Repair Shop Background"
                 className="absolute inset-0 w-full h-full object-cover z-0"
             />
 
@@ -37,7 +37,7 @@ export default function HeroSection({ title, subtitle, bgImage, btn1Text, btn2Te
                                 // Render text mặc định nếu DB chưa có
                                 <>
                                     Sửa chữa & Bảo dưỡng<br />
-                                    xe máy <span className="text-blue-400">chuyên nghiệp</span>
+                                    ô tô <span className="text-blue-400">chuyên nghiệp</span>
                                 </>
                             )}
                         </h1>

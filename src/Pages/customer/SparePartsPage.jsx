@@ -28,7 +28,7 @@ export default function SparePartsPage() {
     const [totalPages, setTotalPages] = useState(0);
     const PAGE_SIZE = 20;
 
-    const brands = ['Honda', 'Yamaha', 'Michelin', 'Motul', 'Bosch'];
+    const brands = ['Michelin', 'Bosch', 'Continental', 'Castrol', 'NGK'];
     const [searchParams, setSearchParams] = useSearchParams();
     const pageFromUrl = parseInt(searchParams.get('page')) || 0;
     const [currentPage, setCurrentPage] = useState(pageFromUrl);

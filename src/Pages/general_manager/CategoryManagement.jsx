@@ -295,7 +295,7 @@ export default function CategoryManagement() {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        placeholder="VD: Dầu nhớt, Phụ tùng Honda..."
+                                        placeholder="VD: Lốp xe, Dầu nhớt, Phanh..."
                                         className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-indigo-500 focus:bg-white transition-colors"
                                     />
                                 </div>

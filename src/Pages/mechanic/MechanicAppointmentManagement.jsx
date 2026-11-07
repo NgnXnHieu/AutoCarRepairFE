@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-    FaMotorcycle, FaUser, FaPhone, FaSearch, FaFilter,
+    FaCar, FaUser, FaPhone, FaSearch, FaFilter,
     FaSpinner, FaClipboardCheck, FaTools, FaUserCog,
     FaMoneyBillWave, FaCheckCircle, FaTimesCircle, FaMapMarkerAlt,
     FaWallet, FaCreditCard, FaRegClock
@@ -412,7 +412,7 @@ const MechanicAppointmentManagement = () => {
                                     </div>
 
                                     <div className="font-bold text-base text-gray-700 flex items-center gap-2 uppercase mb-4">
-                                        <FaMotorcycle className={isEmergency ? "text-red-600" : "text-[#5b9b8b]"} size={20} />
+                                        <FaCar className={isEmergency ? "text-red-600" : "text-[#5b9b8b]"} size={20} />
                                         {vehicle ? `${vehicle.brand} ${vehicle.model}` : 'Chưa có thông tin xe'}
                                     </div>
 
